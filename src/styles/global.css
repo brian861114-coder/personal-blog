@@ -286,15 +286,21 @@ video {
 
 .control {
   height: 50px;
-  border: 0;
+  border: 1px solid var(--line);
   border-radius: 15px;
   padding: 0 46px 0 20px;
-  background: var(--orange);
-  color: white;
+  background: var(--white);
+  color: #1a1a1a;
   font-size: 17px;
   font-weight: 800;
   outline: none;
   cursor: pointer;
+  color-scheme: light;
+}
+
+.control option {
+  background: var(--white);
+  color: #1a1a1a;
 }
 
 .search-articles {
@@ -481,76 +487,6 @@ video {
 .page-btn.active {
   background: var(--red);
   color: white;
-}
-
-.plans {
-  padding: 75px 20px 85px;
-  background: white;
-}
-
-.plans-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  color: var(--brown);
-  font-size: 24px;
-  margin: 0;
-}
-
-.plans-title:before,
-.plans-title:after {
-  content: "";
-  width: 90px;
-  border-top: 1px solid #ddd;
-}
-
-.plan-grid {
-  max-width: 1040px;
-  margin: 45px auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.plan {
-  text-align: center;
-  padding: 26px 20px;
-  border-radius: 18px;
-  background: var(--bg);
-}
-
-.plan-icon {
-  width: 90px;
-  height: 90px;
-  margin: auto;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--soft-blue);
-  color: var(--blue);
-  font-size: 34px;
-}
-
-.plan h3 {
-  margin: 18px 0 4px;
-  color: var(--brown);
-  font-size: 20px;
-}
-
-.plan small {
-  color: var(--red);
-}
-
-.contact {
-  display: block;
-  width: min(440px, 100%);
-  margin: 45px auto 0;
-  padding: 16px;
-  text-align: center;
-  background: var(--red);
-  color: white;
-  border-radius: 14px;
 }
 
 .footer {
@@ -827,20 +763,6 @@ video {
 
   .illustration {
     height: 213px;
-  }
-
-  .plans-title {
-    font-size: 19px;
-    gap: 12px;
-  }
-
-  .plans-title:before,
-  .plans-title:after {
-    width: 35px;
-  }
-
-  .plan-grid {
-    grid-template-columns: 1fr;
   }
 
   .footer-inner {

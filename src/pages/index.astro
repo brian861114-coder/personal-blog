@@ -45,28 +45,6 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
     <button class="page-btn active" type="button">1</button>
     <button class="page-btn" type="button">›</button>
   </nav>
-
-  <section class="plans" id="about-blog">
-    <h2 class="plans-title">這個部落格可以放什麼</h2>
-    <div class="plan-grid">
-      <div class="plan">
-        <div class="plan-icon">文</div>
-        <h3>長文與隨筆</h3>
-        <small>Markdown / MDX 撰寫</small>
-      </div>
-      <div class="plan">
-        <div class="plan-icon">影</div>
-        <h3>圖片與短片</h3>
-        <small>支援圖片與數秒 mp4</small>
-      </div>
-      <div class="plan">
-        <div class="plan-icon">連結</div>
-        <h3>外部連結</h3>
-        <small>參考資料一鍵跳轉</small>
-      </div>
-    </div>
-    <a class="contact" href={withBase('/about/')}>想了解更多？先看看關於我</a>
-  </section>
 </BaseLayout>
 
 <script>
