@@ -30,9 +30,9 @@ const date = post.data.pubDate.toLocaleDateString('zh-TW', {
     </div>
     <h2>{post.data.title}</h2>
   </div>
-  <div class="illustration" data-jp={post.data.jp} style={`--tone:${post.data.tone}`}>
+  <div class="illustration" data-mark={post.data.mark} style={`--tone:${post.data.tone}`}>
     <div class="paper">
-      {post.data.coverLabel ?? post.data.jp}
+      {post.data.coverLabel ?? post.data.mark}
       <small>{post.data.coverHint ?? '一起看看'}</small>
     </div>
     <i class="pencil"></i>

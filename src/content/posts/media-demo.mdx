@@ -4,8 +4,8 @@ description: 示範圖片、數秒 mp4，以及外部連結的寫法。
 pubDate: 2026-08-03
 category: tech
 tone: "#f6d7b8"
-jp: "媒體"
-coverLabel: "Media"
+mark: "媒體"
+coverLabel: "媒體"
 coverHint: "圖＋片示範"
 ---
 
@@ -19,12 +19,9 @@ coverHint: "圖＋片示範"
 
 ## 2. 短片（mp4）
 
-把演示影片放到 `public/videos/demo.mp4` 後，可用 HTML 嵌入：
+把演示影片放到 `public/videos/demo.mp4` 後，在後台插入「短片（mp4）」元件，或直接寫：
 
-<video controls preload="metadata" poster="/images/sample-illustration.svg">
-  <source src="/videos/demo.mp4" type="video/mp4" />
-  你的瀏覽器不支援影片播放。
-</video>
+<Video src="/videos/demo.mp4" poster="/images/sample-illustration.svg" />
 
 建議長度控制在數秒到十數秒，檔案不要太大，比較適合 GitHub Pages。
 

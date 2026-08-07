@@ -1,0 +1,97 @@
+---
+title: 「HTML 學習法」把原文書變成互動式學習網頁
+description: 把教科書 PDF 丟給 AI，自動生成排版精美、可互動的 HTML 學習網頁——從黑麥磚頭到寶寶果泥，你需要的只是一個 prompt。
+pubDate: 2026-06-01
+category: learn
+tone: "#e8f0d8"
+mark: "HTML"
+coverLabel: "HTML 學習法"
+coverHint: "黑麥→果泥"
+draft: false
+---
+
+哈囉！大家端午節快樂！這裡是為哲。
+
+今天想分享的是我自己最近在嘗試的學習方式：**HTML 學習法**。
+
+![把原文書變成互動式 HTML 學習網頁](/images/posts/html-learning-method/01-intro.png)
+
+相信大家一定都有經驗：讀文章時遇到看不懂的地方，就上網問 AI。這方法對於小文章確實有效，但面對長篇系統的內容——例如原文書教材——就會顯得不夠方便。
+
+所以我就在想，對於我這種理解力有限的人來說，比起去啃原文書教材這種難以消化的**黑麥磚頭麵包**，能不能利用 AI 先把內容轉化成適合初學者食用的**寶寶食物果泥**呢？
+
+> **一句話總結：把教科書 PDF 丟給 AI，自動生成排版精美、可互動的 HTML 學習網頁。**
+
+## HTML 學習法是什麼？
+
+![HTML 學習法是什麼？](/images/posts/html-learning-method/02-what-is.png)
+
+HTML 是常見的前端網頁形式。也就是說，這個檔案你可以輕鬆地用瀏覽器打開觀看，不需要專門的閱讀軟體。
+
+相對於平常做筆記用的 Word 檔，HTML 的好處在於更靈活的排版與呈現能力，能讓你的閱讀體驗更加舒適。
+
+![HTML 其實就是可以用瀏覽器打開的學習頁面](/images/posts/html-learning-method/03-why-html.png)
+
+## 跟直接問 ChatGPT 有什麼不同？
+
+你可能會想：把 PDF 貼給 ChatGPT 請它解釋不就好了嗎？
+
+但這個方法給你的是「一套完整的學習介面」，而不只是對話框裡的回答：
+
+- **模組化元件**：24 種可選的呈現元件（公式渲染、折疊推導、互動滑桿、懸停提示卡、進度追蹤……），自由組合你要的功能。
+- **可重複使用的模板**：同一份提示詞模板，換教材內容就能生成不同主題的頁面。今天做半導體物理，明天做機器學習，流程完全一樣。
+- **精美排版**：Apple 設計風格的介面，內建深色模式、字體大小可調，長時間閱讀不會疲勞。
+- **單一 HTML 檔案**：雙擊打開就能用，不需要安裝任何軟體，也可以丟上 GitHub Pages 分享給別人。
+- **擴充性強**：生成骨架後，你可以逐步要求 AI 擴充每個章節的詳細程度，從簡潔摘要到完整推導都能控制。
+
+![不是一次性 AI 回答，而是一套學習介面](/images/posts/html-learning-method/04-vs-chatgpt.png)
+
+## 誰可能會需要這方法？
+
+如果你要面對的是系統性的複雜知識，苦於不知道如何下手時——這套方法可能會幫上忙。
+
+![誰適合使用 HTML 學習法？](/images/posts/html-learning-method/05-who-for.png)
+
+## 需要用到哪些工具？
+
+理論上，你只需要 ChatGPT 的網頁版就能進行操作，但我還是強烈建議大家有閒錢就訂閱 ChatGPT，使用它的 OpenAI Codex 桌面版。
+
+我自己是使用免費開源的 **Hermes Agent + DeepSeek V4 Pro API**，但是在安裝上比較麻煩，之後有機會再跟大家介紹如何使用。
+
+## 能不能先看一下成品？
+
+當然！你可以點擊下方連結觀看我的示範樣本，覺得有幫助再繼續看下去：
+
+- [第 16 章：波動（示範頁）](https://brian861114-coder.github.io/public-showcase/showcase/ch16_waves_demo.html)
+- [第 3 章：導數（示範頁）](https://brian861114-coder.github.io/public-showcase/showcase/ch3_derivatives_demo.html)
+- [24 種元件展示頁](https://brian861114-coder.github.io/public-showcase/showcase/demo_all_components.html)
+
+## 實作步驟
+
+### 第 1 步：下載提示詞模板
+
+先下載提示詞模板：[Google Drive 下載連結](https://drive.google.com/file/d/1pDwUvqRVuXgk6eIq_AQVa8v8ERnZS5u1/view?usp=drive_link)
+
+![實作第 1 步：提示詞模板](/images/posts/html-learning-method/06-step1-template.png)
+
+接著填入想要的元件代號（或填 `auto` 讓 AI 推薦），可參考 [元件展示頁面](https://brian861114-coder.github.io/public-showcase/showcase/demo_all_components.html)。
+
+### 第 2 步：把模板＋教材貼給 AI
+
+把模板與教材一起丟給 AI，生成 HTML。
+
+小技巧：AI 有偷懶傾向，很難一次生成詳細內容。建議先生成骨架，再逐步要求它擴充每個章節——就像從果泥慢慢進階到固體食物。
+
+![實作第 2 步：模板＋教材交給 AI](/images/posts/html-learning-method/07-step2-generate.png)
+
+### 第 3 步：用瀏覽器打開，開始學習
+
+用瀏覽器打開生成的 HTML，開始學習吧。遇到不懂的地方，可以直接問瀏覽器內建的 Gemini。
+
+![實作第 3 步：用瀏覽器打開學習](/images/posts/html-learning-method/08-step3-learn.png)
+
+---
+
+從黑麥磚頭到寶寶果泥，你需要的只是一個 prompt。
+
+如果你試了覺得有用（或者卡關了），歡迎留言告訴我！有機會我會再分享怎麼安裝 Hermes Agent 來跑這套流程。

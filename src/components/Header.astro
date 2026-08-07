@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { current = 'home' } = Astro.props;
+const isDev = import.meta.env.DEV;
 ---
 
 <header class="header" id="site-header">
@@ -20,6 +21,7 @@ const { current = 'home' } = Astro.props;
       <a href={`${withBase('/')}#topics`}>分類</a>
       <a href={withBase('/about/')}>關於我</a>
       <a href={`${withBase('/')}#footer`}>聯絡</a>
+      {isDev && <a href="/keystatic/">後台</a>}
     </nav>
     <form class="header-search" action={`${withBase('/')}`} method="get">
       <input name="q" aria-label="全站搜尋" placeholder="搜尋文章…" />

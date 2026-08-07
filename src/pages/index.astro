@@ -16,7 +16,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
     <a href={withBase('/')}>首頁</a><span>›</span>文章列表
   </div>
 
-  <Hero eyebrow="ニュース" title="個人部落格" />
+  <Hero eyebrow="最新文章" title="個人部落格" />
 
   <section class="filters" id="topics" aria-label="文章篩選">
     <label class="filter-label" for="level">文章分類</label>
