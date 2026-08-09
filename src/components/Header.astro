@@ -12,7 +12,13 @@ const isDev = import.meta.env.DEV;
 <header class="header" id="site-header">
   <div class="header-inner">
     <a class="brand" href={withBase('/')}>
-      <span class="cat-logo"><i></i></span>
+      <img
+        class="brand-portrait"
+        src={withBase('/images/brand-doodle-portrait.png')}
+        alt=""
+        width="46"
+        height="46"
+      />
       <span>NOTES<small>慢慢寫，慢慢想。</small></span>
     </a>
     <nav class="nav">

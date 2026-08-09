@@ -69,44 +69,14 @@ video {
   font-weight: 900;
 }
 
-.cat-logo {
-  width: 42px;
-  height: 36px;
-  border-radius: 50% 50% 45% 45%;
-  background: var(--orange);
-  position: relative;
-  flex-shrink: 0;
-}
-
-.cat-logo:before,
-.cat-logo:after {
-  content: "";
-  position: absolute;
-  top: -5px;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 14px solid var(--orange);
-}
-
-.cat-logo:before {
-  left: 1px;
-  transform: rotate(-20deg);
-}
-
-.cat-logo:after {
-  right: 1px;
-  transform: rotate(20deg);
-}
-
-.cat-logo i {
-  position: absolute;
-  left: 12px;
-  top: 15px;
-  width: 4px;
-  height: 4px;
-  background: var(--brown);
+.brand-portrait {
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  box-shadow: 14px 0 var(--brown);
+  object-fit: cover;
+  background: #fbf4e8;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(74, 38, 29, 0.12);
+  flex-shrink: 0;
 }
 
 .brand small {
@@ -185,7 +155,10 @@ video {
   margin: auto;
   border-radius: 30px;
   overflow: hidden;
-  background: var(--blue);
+  background-color: #33291f;
+  background-image: var(--hero-image);
+  background-position: center 46%;
+  background-size: cover;
   color: #fff;
   position: relative;
   display: grid;
@@ -193,34 +166,23 @@ video {
 }
 
 .hero:before {
-  content: "筆記 • 部落格 • NOTES • 筆記 • 部落格 • NOTES";
+  content: "";
   position: absolute;
-  left: -30px;
-  top: 28px;
-  white-space: nowrap;
-  color: #ffffff17;
-  font-size: 58px;
-  font-weight: 900;
-  letter-spacing: 16px;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(26, 20, 14, 0.08) 0%, rgba(26, 20, 14, 0.48) 38%, rgba(19, 15, 11, 0.38) 62%, rgba(19, 15, 11, 0.08) 100%),
+    linear-gradient(180deg, rgba(8, 7, 6, 0.08), rgba(8, 7, 6, 0.22));
 }
 
 .hero:after {
-  content: "慢　慢　寫　下　來";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -22px;
-  text-align: center;
-  color: #ffffff12;
-  font-size: 105px;
-  font-weight: 900;
-  letter-spacing: 17px;
+  content: none;
 }
 
 .hero-title {
   position: relative;
   text-align: center;
   z-index: 1;
+  text-shadow: 0 2px 18px rgba(16, 12, 8, 0.72);
 }
 
 .hero-title .eyebrow {
@@ -244,9 +206,7 @@ video {
 }
 
 .hero-dots {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .hero-dots i {
@@ -402,17 +362,18 @@ video {
   height: 185px;
   position: relative;
   overflow: hidden;
-  background: var(--tone, #cce8f3);
+  background-color: var(--tone, #e8dcc6);
+  background-image: var(--card-art);
+  background-position: center;
+  background-size: cover;
 }
 
 .illustration:before {
-  content: attr(data-mark);
+  content: "";
   position: absolute;
-  right: 12px;
-  top: 5px;
-  color: #fff8;
-  font-size: 52px;
-  font-weight: 900;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 253, 247, 0.18), transparent 62%);
+  pointer-events: none;
 }
 
 .paper {
@@ -421,10 +382,11 @@ video {
   height: 105px;
   left: 50%;
   top: 42px;
-  transform: translateX(-50%) rotate(-4deg);
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 8px 0 #0000000d;
+  transform: translateX(-50%) rotate(-1.5deg);
+  background: rgba(255, 253, 247, 0.92);
+  border: 1px solid rgba(92, 61, 42, 0.18);
+  border-radius: 2px;
+  box-shadow: 0 8px 18px rgba(74, 38, 29, 0.12);
   padding: 18px;
   color: var(--brown);
   font-size: 22px;
@@ -437,26 +399,6 @@ video {
   margin-top: 7px;
   color: var(--red);
   font-size: 12px;
-}
-
-.pencil {
-  position: absolute;
-  width: 100px;
-  height: 15px;
-  right: 18px;
-  bottom: 23px;
-  background: var(--orange);
-  border-radius: 9px;
-  transform: rotate(-29deg);
-}
-
-.pencil:after {
-  content: "";
-  position: absolute;
-  right: -13px;
-  border-left: 15px solid var(--brown);
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
 }
 
 .empty {
@@ -742,6 +684,7 @@ video {
 @media (max-width: 600px) {
   .hero {
     height: 300px;
+    background-position: 68% 46%;
   }
 
   .hero-title h1 {
