@@ -35,7 +35,7 @@ npm start
 4. 新增文章，或點現有文章修改
 5. 填寫：
    - 標題、摘要、發布日期、分類
-   - 卡片底色 / 裝飾字（可沿用預設）
+   - 卡片底色（選填）、封面圖（選填，可從後台上傳）
    - 正文（可插入圖片、連結、「短片（mp4）」元件）
 6. 若有草稿，勾選「草稿」；確定發布就取消勾選
 7. 儲存後，回前台預覽確認
@@ -58,9 +58,7 @@ description: 一句話摘要
 pubDate: 2026-08-06
 category: essay   # essay | tech | life | learn
 tone: "#cce8f3"   # 卡片淺色底
-mark: "筆記"       # 卡片右上裝飾字
-coverLabel: "筆記"
-coverHint: "一起看看"
+# cover: /images/posts/xxx.jpg  # 卡片封面圖（選填，於後台上傳）
 draft: false
 ---
 ```

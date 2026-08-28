@@ -14,6 +14,9 @@ const date = post.data.pubDate.toLocaleDateString('zh-TW', {
   month: '2-digit',
   day: '2-digit',
 });
+const label = categoryLabel(post.data.category);
+const cover = post.data.cover ? withBase(post.data.cover) : null;
+const cardArt = cover ?? withBase(`/images/card-backgrounds/${post.data.category}.jpg`);
 ---
 
 <a
@@ -26,17 +29,14 @@ const date = post.data.pubDate.toLocaleDateString('zh-TW', {
   <div class="card-copy">
     <div class="card-meta">
       <span class="level">{categoryLabel(post.data.category)}</span>
-      <span class="views">{date}</span>
+      <span class="date">{date}</span>
     </div>
     <h2>{post.data.title}</h2>
   </div>
   <div
-    class="illustration"
-    style={`--tone:${post.data.tone};--card-art:url("${withBase(`/images/card-backgrounds/${post.data.category}.jpg`)}")`}
+    class:list={['illustration', { 'has-cover': !!cover }]}
+    style={`--tone:${post.data.tone};--card-art:url("${cardArt}")`}
   >
-    <div class="paper">
-      {post.data.coverLabel ?? post.data.mark}
-      <small>{post.data.coverHint ?? '一起看看'}</small>
-    </div>
+    <div class="washi" aria-hidden="true">{label}</div>
   </div>
 </a>

@@ -47,17 +47,12 @@ export default config({
         tone: fields.text({
           label: '卡片底色',
           defaultValue: '#cce8f3',
-          description: '例如 #cce8f3、#f6d7b8',
+          description: '封面圖載入前的底色，例如 #cce8f3、#f6d7b8',
         }),
-        mark: fields.text({
-          label: '卡片裝飾字',
-          defaultValue: '筆記',
-        }),
-        coverLabel: fields.text({
-          label: '卡片中央標題（選填）',
-        }),
-        coverHint: fields.text({
-          label: '卡片小字（選填）',
+        cover: fields.image({
+          label: '封面圖（選填）',
+          directory: 'public/images/posts',
+          publicPath: '/images/posts/',
         }),
         draft: fields.checkbox({
           label: '草稿（不在前台顯示）',
