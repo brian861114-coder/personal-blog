@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Video from '../../components/Video.astro';
+import Break from '../../components/Break.astro';
+import PostImg from '../../components/PostImg.astro';
 import { categoryLabel } from '../../lib/categories';
 import { withBase } from '../../lib/paths';
 
@@ -37,7 +39,7 @@ const date = post.data.pubDate.toLocaleDateString('zh-TW', {
     </div>
 
     <article class="post-body">
-      <Content components={{ Video }} />
+      <Content components={{ Video, Break, img: PostImg }} />
       <a class="back-link" href={`${withBase('/')}#articles`}>‹ 回到文章列表</a>
     </article>
   </div>

@@ -518,7 +518,7 @@ video {
   padding: 42px 40px;
   color: var(--text);
   font-weight: 500;
-  line-height: 1.9;
+  line-height: 2.05;
   box-shadow: 0 10px 28px #4a261d0a;
 }
 
@@ -530,7 +530,11 @@ video {
 }
 
 .post-body p {
-  margin: 0 0 1.2em;
+  margin: 0 0 2em;
+}
+
+.post-break {
+  height: 2em;
 }
 
 .post-body a {
@@ -539,11 +543,18 @@ video {
   text-underline-offset: 3px;
 }
 
+.post-body p:has(> img),
+.post-body p:has(> video) {
+  text-align: center;
+}
+
 .post-body img,
 .post-body video {
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  margin: 1.4em auto;
   border-radius: 16px;
-  margin: 1.4em 0;
   background: #eef4f8;
 }
 

@@ -1,5 +1,19 @@
+import { createElement } from 'react';
 import { config, fields, collection } from '@keystatic/core';
 import { block } from '@keystatic/core/content-components';
+
+/** Clipboard pastes are often named `image.png`; Keystatic would otherwise overwrite. */
+function uniqueImageFilename(originalFilename: string) {
+  const lastDot = originalFilename.lastIndexOf('.');
+  const ext = lastDot === -1 ? '' : originalFilename.slice(lastDot).toLowerCase();
+  const base =
+    (lastDot === -1 ? originalFilename : originalFilename.slice(0, lastDot))
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'image';
+  const unique = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+  return `${base}-${unique}${ext}`;
+}
 
 export default config({
   storage: {
@@ -64,9 +78,24 @@ export default config({
             image: {
               directory: 'public/images/posts',
               publicPath: '/images/posts/',
+              transformFilename: uniqueImageFilename,
             },
           },
           components: {
+            Break: block({
+              label: '空行',
+              description: '文章裡多按的 Enter 會顯示成這段空白',
+              schema: {},
+              NodeView: () =>
+                createElement('div', {
+                  title: '空行',
+                  style: {
+                    height: '2em',
+                    margin: '0.2em 0',
+                    borderLeft: '3px solid #e8e5e3',
+                  },
+                }),
+            }),
             Video: block({
               label: '短片（mp4）',
               schema: {

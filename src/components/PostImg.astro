@@ -1,0 +1,14 @@
+---
+import { withBase } from '../lib/paths';
+
+interface Props {
+  src?: string;
+  alt?: string;
+  title?: string;
+}
+
+const { src = '', alt = '', title } = Astro.props;
+const href = !src || /^https?:\/\//.test(src) ? src : withBase(src);
+---
+
+<img src={href} alt={alt} title={title} />

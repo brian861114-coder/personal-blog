@@ -10,7 +10,8 @@
     "start": "powershell -NoProfile -ExecutionPolicy Bypass -File ./start-blog.ps1",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",
@@ -22,5 +23,8 @@
     "astro": "^7.1.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1"
   }
 }

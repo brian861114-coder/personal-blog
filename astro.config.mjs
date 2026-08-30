@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import keystatic from '@keystatic/astro';
+import { remarkBlankLines } from './src/lib/remark-blank-lines.ts';
+import { keystaticEmptyParagraphs } from './src/lib/keystatic-empty-paragraphs.ts';
 
 // GitHub Pages：
 // - 使用者頁（username.github.io）→ base: '/'
@@ -19,5 +21,11 @@ export default defineConfig({
   // Keystatic 後台路徑不含強制結尾斜線；用 ignore 避免 /keystatic 404。
   // 前台連結仍統一使用結尾斜線（例如 /about/）。
   trailingSlash: 'ignore',
+  markdown: {
+    remarkPlugins: [remarkBlankLines],
+  },
   integrations: [mdx(), react(), ...(enableKeystatic ? [keystatic()] : [])],
+  vite: {
+    plugins: [keystaticEmptyParagraphs()],
+  },
 });
