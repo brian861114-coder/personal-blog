@@ -16,9 +16,11 @@ tone: "#f6d7b8"
 
 ## 2. 短片（mp4）
 
-把演示影片放到 `public/videos/demo.mp4` 後，在後台插入「短片（mp4）」元件，或直接寫：
+在後台正文插入「短片（mp4）」→ **Choose file** 選 mp4。儲存文章後，檔案會進 `public/videos/posts/<slug>/`，並在該段寫入：
 
-<Video src="/videos/demo.mp4" poster="/images/sample-illustration.svg" />
+```mdx
+<Video src="/videos/posts/media-demo/demo.mp4" />
+```
 
 建議長度控制在數秒到十數秒，檔案不要太大，比較適合 GitHub Pages。
 

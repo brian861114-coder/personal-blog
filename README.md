@@ -36,7 +36,7 @@ npm start
 5. 填寫：
    - 標題、摘要、發布日期、分類
    - 卡片底色（選填）、封面圖（選填，可從後台上傳）
-   - 正文（可插入圖片、連結、「短片（mp4）」元件）
+   - 正文（可插入圖片、連結、「短片（mp4）」；短片用選檔，不必手填路徑）
 6. 若有草稿，勾選「草稿」；確定發布就取消勾選
 7. 儲存後，回前台預覽確認
 8. `git add` → `git commit` → `git push`（部署到 GitHub Pages）
@@ -45,7 +45,7 @@ npm start
 
 1. 在 `src/content/posts/` 新增或修改 `.mdx` 檔
 2. 圖片放到 `public/images/`（後台上傳預設進 `public/images/posts/`）
-3. 短片放到 `public/videos/`（建議數秒、檔案精簡）
+3. 短片：後台選檔會存到 `public/videos/posts/<slug>/`（建議數秒、檔案精簡）
 4. `npm run dev` 預覽
 5. commit 後 push
 
@@ -63,10 +63,10 @@ draft: false
 ---
 ```
 
-短片寫法（後台也可插入同名元件）：
+短片寫法（後台選檔會自動產生類似路徑）：
 
 ```mdx
-<Video src="/videos/demo.mp4" poster="/images/sample-illustration.svg" />
+<Video src="/videos/posts/your-slug/demo.mp4" />
 ```
 
 外部連結直接用 Markdown：

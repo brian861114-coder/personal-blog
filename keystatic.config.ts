@@ -3,14 +3,14 @@ import { config, fields, collection } from '@keystatic/core';
 import { block } from '@keystatic/core/content-components';
 
 /** Clipboard pastes are often named `image.png`; Keystatic would otherwise overwrite. */
-function uniqueImageFilename(originalFilename: string) {
+function uniqueMediaFilename(originalFilename: string, fallbackBase = 'file') {
   const lastDot = originalFilename.lastIndexOf('.');
   const ext = lastDot === -1 ? '' : originalFilename.slice(lastDot).toLowerCase();
   const base =
     (lastDot === -1 ? originalFilename : originalFilename.slice(0, lastDot))
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '') || 'image';
+      .replace(/^-+|-+$/g, '') || fallbackBase;
   const unique = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
   return `${base}-${unique}${ext}`;
 }
@@ -78,7 +78,7 @@ export default config({
             image: {
               directory: 'public/images/posts',
               publicPath: '/images/posts/',
-              transformFilename: uniqueImageFilename,
+              transformFilename: (name) => uniqueMediaFilename(name, 'image'),
             },
           },
           components: {
@@ -98,16 +98,35 @@ export default config({
             }),
             Video: block({
               label: '短片（mp4）',
+              description: '選檔後會存到 public/videos/posts/，並插入此段',
               schema: {
-                src: fields.text({
-                  label: '影片路徑',
-                  description: '例如 /videos/demo.mp4',
+                src: fields.file({
+                  label: '短片檔案',
+                  description: '選 mp4（建議 3～5 秒、盡量小於 2MB）。儲存文章時才會寫入資料夾。',
+                  directory: 'public/videos/posts',
+                  publicPath: '/videos/posts/',
+                  transformFilename: (name) => uniqueMediaFilename(name, 'video'),
                   validation: { isRequired: true },
                 }),
-                poster: fields.text({
-                  label: '封面圖路徑（選填）',
-                  description: '例如 /images/sample-illustration.svg',
+                poster: fields.image({
+                  label: '封面圖（選填）',
+                  directory: 'public/images/posts',
+                  publicPath: '/images/posts/',
+                  transformFilename: (name) => uniqueMediaFilename(name, 'image'),
                 }),
+              },
+              ContentView: ({ value }) => {
+                const filename =
+                  value.src && typeof value.src === 'object' && 'filename' in value.src
+                    ? String(value.src.filename)
+                    : '';
+                return createElement(
+                  'div',
+                  {
+                    style: { color: '#38586c', fontSize: '0.92em' },
+                  },
+                  filename ? `已選：${filename}` : '尚未選檔，按 Edit 選 mp4',
+                );
               },
             }),
           },

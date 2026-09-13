@@ -2,19 +2,24 @@
 import { withBase } from '../lib/paths';
 
 interface Props {
-  src: string;
+  src?: string;
   poster?: string;
 }
 
 const { src, poster } = Astro.props;
-const videoSrc = src.startsWith('http') ? src : withBase(src);
+const videoSrc = src ? (src.startsWith('http') ? src : withBase(src)) : undefined;
 const posterSrc = poster ? (poster.startsWith('http') ? poster : withBase(poster)) : undefined;
+const mime = videoSrc?.toLowerCase().includes('.webm')
+  ? 'video/webm'
+  : 'video/mp4';
 ---
 
-<video class="post-video" controls preload="metadata" poster={posterSrc}>
-  <source src={videoSrc} type="video/mp4" />
-  你的瀏覽器不支援影片播放。
-</video>
+{videoSrc && (
+  <video class="post-video" controls preload="metadata" poster={posterSrc}>
+    <source src={videoSrc} type={mime} />
+    你的瀏覽器不支援影片播放。
+  </video>
+)}
 
 <style>
   .post-video {
