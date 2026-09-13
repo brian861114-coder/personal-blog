@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import { config, fields, collection } from '@keystatic/core';
+import { config, fields, collection, singleton } from '@keystatic/core';
 import { block } from '@keystatic/core/content-components';
 
 /** Clipboard pastes are often named `image.png`; Keystatic would otherwise overwrite. */
@@ -14,6 +14,21 @@ function uniqueMediaFilename(originalFilename: string, fallbackBase = 'file') {
   const unique = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
   return `${base}-${unique}${ext}`;
 }
+
+const emptyParagraphBlock = block({
+  label: '空行',
+  description: '文章裡多按的 Enter 會顯示成這段空白',
+  schema: {},
+  NodeView: () =>
+    createElement('div', {
+      title: '空行',
+      style: {
+        height: '2em',
+        margin: '0.2em 0',
+        borderLeft: '3px solid #e8e5e3',
+      },
+    }),
+});
 
 export default config({
   storage: {
@@ -82,20 +97,7 @@ export default config({
             },
           },
           components: {
-            Break: block({
-              label: '空行',
-              description: '文章裡多按的 Enter 會顯示成這段空白',
-              schema: {},
-              NodeView: () =>
-                createElement('div', {
-                  title: '空行',
-                  style: {
-                    height: '2em',
-                    margin: '0.2em 0',
-                    borderLeft: '3px solid #e8e5e3',
-                  },
-                }),
-            }),
+            Break: emptyParagraphBlock,
             Video: block({
               label: '短片（mp4）',
               description: '選檔後會存到 public/videos/posts/，並插入此段',
@@ -130,6 +132,98 @@ export default config({
               },
             }),
           },
+        }),
+      },
+    }),
+  },
+  singletons: {
+    about: singleton({
+      label: '關於我',
+      path: 'src/content/pages/about',
+      format: { contentField: 'content' },
+      entryLayout: 'content',
+      schema: {
+        title: fields.text({
+          label: '標題',
+          defaultValue: '關於我',
+          validation: { isRequired: true },
+        }),
+        description: fields.text({
+          label: '摘要',
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+        content: fields.mdx({
+          label: '正文',
+          options: {
+            image: {
+              directory: 'public/images/pages',
+              publicPath: '/images/pages/',
+              transformFilename: (name) => uniqueMediaFilename(name, 'image'),
+            },
+          },
+          components: {
+            Break: emptyParagraphBlock,
+          },
+        }),
+      },
+    }),
+    faq: singleton({
+      label: '常見問題',
+      path: 'src/content/pages/faq',
+      format: { data: 'json' },
+      schema: {
+        title: fields.text({
+          label: '標題',
+          defaultValue: '常見問題',
+          validation: { isRequired: true },
+        }),
+        description: fields.text({
+          label: '摘要',
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+        items: fields.array(
+          fields.object({
+            question: fields.text({
+              label: '問題',
+              validation: { isRequired: true },
+            }),
+            answer: fields.text({
+              label: '回答',
+              multiline: true,
+              validation: { isRequired: true },
+            }),
+          }),
+          {
+            label: '問題列表',
+            itemLabel: (props) => props.fields.question.value || '新問題',
+          },
+        ),
+      },
+    }),
+    contact: singleton({
+      label: '聯絡方式',
+      path: 'src/content/pages/contact',
+      format: { data: 'json' },
+      schema: {
+        title: fields.text({
+          label: '標題',
+          defaultValue: '聯絡方式',
+          validation: { isRequired: true },
+        }),
+        description: fields.text({
+          label: '摘要',
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+        email: fields.text({
+          label: '信箱',
+          validation: { isRequired: true },
+        }),
+        note: fields.text({
+          label: '備註（頁尾與聯絡頁都會顯示）',
+          multiline: true,
         }),
       },
     }),

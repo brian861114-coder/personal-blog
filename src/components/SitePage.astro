@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  title: string;
+  description: string;
+  kicker: string;
+  heading: string;
+  current?: 'home' | 'posts' | 'about' | 'faq' | 'contact';
+}
+
+const { title, description, kicker, heading, current = 'home' } = Astro.props;
+---
+
+<BaseLayout title={`${title} — NOTES`} description={description} current={current}>
+  <div class="breadcrumbs">
+    <a href={withBase('/')}>首頁</a><span>›</span>{heading}
+  </div>
+
+  <div class="post-shell">
+    <div class="post-hero-card">
+      <div class="post-kicker">{kicker}</div>
+      <h1>{heading}</h1>
+      <p class="post-meta">{description}</p>
+    </div>
+
+    <article class="post-body">
+      <slot />
+      <a class="back-link" href={withBase('/')}>‹ 回到文章列表</a>
+    </article>
+  </div>
+</BaseLayout>

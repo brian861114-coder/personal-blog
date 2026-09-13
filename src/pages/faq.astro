@@ -1,0 +1,25 @@
+---
+import SitePage from '../components/SitePage.astro';
+import { faqPage } from '../lib/site-pages';
+---
+
+<SitePage
+  title={faqPage.title}
+  description={faqPage.description}
+  kicker="問答"
+  heading={faqPage.title}
+  current="faq"
+>
+  {faqPage.items.length === 0 ? (
+    <p>尚無常見問題，可到後台「常見問題」新增。</p>
+  ) : (
+    <div class="faq-list">
+      {faqPage.items.map((item) => (
+        <details class="faq-item">
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  )}
+</SitePage>

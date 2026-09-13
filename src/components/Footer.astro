@@ -1,5 +1,8 @@
 ---
 import { withBase } from '../lib/paths';
+import { contactPage } from '../lib/site-pages';
+
+const noteLines = (contactPage.note ?? '').split('\n').filter(Boolean);
 ---
 
 <footer class="footer" id="footer">
@@ -13,13 +16,18 @@ import { withBase } from '../lib/paths';
     </div>
     <nav class="footer-links">
       <a href={withBase('/about/')}>關於我</a>
-      <a href={`${withBase('/')}#footer`}>常見問題</a>
-      <a href={`${withBase('/')}#footer`}>聯絡方式</a>
+      <a href={withBase('/faq/')}>常見問題</a>
+      <a href={withBase('/contact/')}>聯絡方式</a>
     </nav>
     <div class="footer-contact">
       聯絡信箱<br /><br />
-      brian861114@gmail.com<br />
-      GitHub Pages 靜態部落格
+      <a href={`mailto:${contactPage.email}`}>{contactPage.email}</a>
+      {noteLines.map((line) => (
+        <>
+          <br />
+          {line}
+        </>
+      ))}
     </div>
   </div>
   <div class="copyright">© {new Date().getFullYear()} NOTES. 個人部落格。</div>

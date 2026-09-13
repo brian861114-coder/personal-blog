@@ -2,7 +2,7 @@
 import { withBase } from '../lib/paths';
 
 interface Props {
-  current?: 'home' | 'posts' | 'about';
+  current?: 'home' | 'posts' | 'about' | 'faq' | 'contact';
 }
 
 const { current = 'home' } = Astro.props;
@@ -25,8 +25,8 @@ const isDev = import.meta.env.DEV;
       <a href={withBase('/')} aria-current={current === 'home' ? 'page' : undefined}>首頁</a>
       <a href={`${withBase('/')}#articles`} aria-current={current === 'posts' ? 'page' : undefined}>文章</a>
       <a href={`${withBase('/')}#topics`}>分類</a>
-      <a href={withBase('/about/')}>關於我</a>
-      <a href={`${withBase('/')}#footer`}>聯絡</a>
+      <a href={withBase('/about/')} aria-current={current === 'about' ? 'page' : undefined}>關於我</a>
+      <a href={withBase('/contact/')}>聯絡</a>
       {isDev && <a href="/keystatic/">後台</a>}
     </nav>
     <form class="header-search" action={`${withBase('/')}`} method="get">

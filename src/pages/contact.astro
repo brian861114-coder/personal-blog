@@ -1,0 +1,22 @@
+---
+import SitePage from '../components/SitePage.astro';
+import { contactPage } from '../lib/site-pages';
+
+const noteLines = (contactPage.note ?? '').split('\n').filter(Boolean);
+---
+
+<SitePage
+  title={contactPage.title}
+  description={contactPage.description}
+  kicker="聯絡"
+  heading={contactPage.title}
+  current="contact"
+>
+  <p>
+    聯絡信箱<br />
+    <a href={`mailto:${contactPage.email}`}>{contactPage.email}</a>
+  </p>
+  {noteLines.map((line) => (
+    <p>{line}</p>
+  ))}
+</SitePage>

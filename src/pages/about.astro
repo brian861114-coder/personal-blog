@@ -1,29 +1,24 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { withBase } from '../lib/paths';
+import { getCollection, render } from 'astro:content';
+import SitePage from '../components/SitePage.astro';
+import Break from '../components/Break.astro';
+import PostImg from '../components/PostImg.astro';
+
+const pages = await getCollection('about');
+const about = pages[0];
+if (!about) {
+  throw new Error('缺少關於我內容：請在後台「關於我」儲存一次。');
+}
+
+const { Content } = await render(about);
 ---
 
-<BaseLayout
-  title="關於我 — NOTES"
-  description="為哲分享AI應用與生活心得的小網站"
+<SitePage
+  title={about.data.title}
+  description={about.data.description}
+  kicker="關於"
+  heading={about.data.title}
   current="about"
 >
-  <div class="breadcrumbs">
-    <a href={withBase('/')}>首頁</a><span>›</span>關於我
-  </div>
-
-  <div class="post-shell">
-    <div class="post-hero-card">
-      <div class="post-kicker">關於</div>
-      <h1>關於我</h1>
-      <p class="post-meta">為哲分享AI應用與生活心得的小網站</p>
-    </div>
-
-    <article class="post-body">
-      <p>為哲分享AI應用與生活心得的小網站</p>
-      <p>我通常不分享，因為一分享別人就會發現我的無知</p>
-      <p>我有時會分享，因為有些人或許能從我的有知獲得啟發</p>
-      <a class="back-link" href={withBase('/')}>‹ 回到文章列表</a>
-    </article>
-  </div>
-</BaseLayout>
+  <Content components={{ Break, img: PostImg }} />
+</SitePage>
