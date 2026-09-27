@@ -8,6 +8,10 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Writing style
+
+`寫作風格.md` is the style guide for posts. Read it before drafting a post. When a commit publishes a new post, or Brian asks to refresh the style, update it in the same commit per its section 10.
+
 ## Post videos
 
 When clipping footage for a post, or inserting a clip into MDX, finish only when all of these hold: the file is under `public/videos/posts/<slug>/`, `ffprobe` duration matches the requested range, size is well under 2MB, and the post page `<video>` plays.

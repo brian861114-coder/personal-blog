@@ -10,7 +10,7 @@ locations:
 status_source: inline
 snapshot: summary
 related: []
-card_reviewed: 2026-09-24
+card_reviewed: 2026-09-27
 ---
 ## 用途
 繁中淺色文章站，放筆記、觀察與實驗紀錄（文字／圖／短片／連結），給外人閱讀。
@@ -30,7 +30,7 @@ Node ≥22.12、npm（`package.json`：astro、mdx、react、keystatic）。部�
 未發布草稿若含私人行程或未公開構想，勿外洩。勿把本機 Keystatic 當成線上後台。`node_modules/`、`.astro/`、`dist/` 不當文案來源。
 
 ## 給 AI 的注意事項
-後台只在 `astro dev`。改片須符合時長／體積契約。勿啟動 dev server。本卡不寫公開站完整 URL。
+後台只在 `astro dev`。改片須符合時長／體積契約。勿啟動 dev server。本卡不寫公開站完整 URL。寫作風格正本在根目錄 `寫作風格.md`（初稿前讀、發布新文時更新）。
 
 ## 現況
 最後 commit：2026-09-20（對比度）。未追蹤 `research/x-post-drafts-2026-09-21.md`。
