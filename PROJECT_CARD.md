@@ -22,6 +22,7 @@ card_reviewed: 2026-09-27
 
 ## 結構與入口
 文章 `src/content/posts/`。一鍵：`start-blog.bat`／`npm start`。README 仍寫舊 `Downloads\personal blog` 路徑。
+- 導覽手冊：`PROJECT_GUIDE.html`（cursor-grok-4.6-medium 產生，2026-10-01；來源未逐條人工核對）
 
 ## 外部依賴
 Node ≥22.12、npm（`package.json`：astro、mdx、react、keystatic）。部署用 Pages 環境變數 `SITE`／`BASE`。遠端：`personal-blog`。
